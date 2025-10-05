@@ -24,6 +24,13 @@ public class AddressBookController {
         this.buddyInfoRepository = buddyInfoRepository;
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Void> redirectToApi() {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .header("Location", "/api/addressBooks")
+                .build();
+    }
+
     // Get all address books
     @GetMapping("/addressBooks")
     public ResponseEntity<List<AddressBook>> getAllAddressBooks() {

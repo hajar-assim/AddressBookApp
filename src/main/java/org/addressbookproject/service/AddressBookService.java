@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -39,5 +40,12 @@ public class AddressBookService {
 
     public List<BuddyInfo> findAllBuddies() {
         return (List<BuddyInfo>)buddyInfoRepo.findAll();
+    }
+    public List<AddressBook> findAllAddressBooks() {
+        return (List<AddressBook>) addressBookRepo.findAll();
+    }
+
+    public Optional<AddressBook> findAddressBookById(Long id) {
+        return addressBookRepo.findById(id);
     }
 }

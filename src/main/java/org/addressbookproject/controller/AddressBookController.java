@@ -25,13 +25,6 @@ public class AddressBookController {
         this.buddyInfoRepository = buddyInfoRepository;
     }
 
-    @GetMapping("/")
-    public String viewAllAddressbooks(Model model) {
-        Iterable<AddressBook> addressBooks = addressBookRepository.findAll();
-        model.addAttribute("addressBooks", addressBooks);
-        return "addressBookView";
-    }
-
     // Get all address books
     @GetMapping("/addressBooks")
     public ResponseEntity<List<AddressBook>> getAllAddressBooks() {

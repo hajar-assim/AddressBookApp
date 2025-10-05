@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View AddressBook</title>
+</head>
+<body>
+<h1>Address Book [[${book.id}]]</h1>
+
+<h2>Buddies</h2>
+<ul>
+    <li th:each="buddy : ${book.buddies}">
+        <span th:text="${buddy.name}"></span> -
+        <span th:text="${buddy.phoneNumber}"></span>
+    </li>
+</ul>
+
+<div th:if="${#lists.isEmpty(book.buddies)}">
+    <p>No buddies yet.</p>
+</div>
+
+<a th:href="@{'/addressBooks/' + ${book.id} + '/addBuddy'}">
+    <button>Add Buddy</button>
+</a>
+
+<a href="/">Back to Home</a>
+</body>
+</html>

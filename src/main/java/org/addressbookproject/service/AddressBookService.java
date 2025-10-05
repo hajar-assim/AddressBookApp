@@ -30,6 +30,12 @@ public class AddressBookService {
         buddyInfoRepo.save(buddy);
         return buddy;
     }
+    public BuddyInfo addBuddy(AddressBook book, String name, String phone, String address) {
+        BuddyInfo buddy = new BuddyInfo(name, phone, address);
+        book.getBuddies().add(buddy);
+        buddyInfoRepo.save(buddy);
+        return buddy;
+    }
 
     public List<BuddyInfo> findAllBuddies() {
         return (List<BuddyInfo>)buddyInfoRepo.findAll();

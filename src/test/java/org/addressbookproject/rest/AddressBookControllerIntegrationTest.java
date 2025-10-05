@@ -115,4 +115,36 @@ public class AddressBookControllerIntegrationTest {
         assertNotNull(buddies);
         assertEquals(0, buddies.length);
     }
+    @Test
+    public void testAddBuddyWithAddress() {
+        ResponseEntity<AddressBook> createBook = restTemplate.postForEntity(
+                baseUrl + "/addressBook", null, AddressBook.class);
+        AddressBook book = createBook.getBody();
+        assertNotNull(book);
+
+        BuddyInfo buddy = new BuddyInfo("Charlie", "5551234");
+        buddy.setAddress("123 Main St");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<BuddyInfo> request = new HttpEntity<>(buddy, headers);
+
+        ResponseEntity<BuddyInfo> addResponse = restTemplate.postForEntity(
+                baseUrl + "/addressBook/" + book.getId() + "/buddies", request, BuddyInfo.class);
+
+        assertEquals(HttpStatus.CREATED, addResponse.getStatusCode());
+        BuddyInfo savedBuddy = addResponse.getBody();
+        assertNotNull(savedBuddy);
+        assertEquals("Charlie", savedBuddy.getName());
+        assertEquals("123 Main St", savedBuddy.getAddress());
+
+        ResponseEntity<BuddyInfo[]> getResponse = restTemplate.getForEntity(
+                baseUrl + "/addressBook/" + book.getId() + "/buddies", BuddyInfo[].class);
+
+        assertEquals(HttpStatus.OK, getResponse.getStatusCode());
+        BuddyInfo[] buddies = getResponse.getBody();
+        assertNotNull(buddies);
+        assertEquals(1, buddies.length);
+        assertEquals("123 Main St", buddies[0].getAddress());
+    }
 }

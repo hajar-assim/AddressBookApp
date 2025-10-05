@@ -6,6 +6,7 @@ import org.addressbookproject.repository.AddressBookRepository;
 import org.addressbookproject.repository.BuddyInfoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,10 @@ public class AddressBookController {
     }
 
     @GetMapping("/")
-    public String home() {
-        return "redirect:/addressBooks/1/view";
+    public String viewAllAddressbooks(Model model) {
+        Iterable<AddressBook> addressBooks = addressBookRepository.findAll();
+        model.addAttribute("addressBooks", addressBooks);
+        return "addressBookView";
     }
 
     // Get all address books

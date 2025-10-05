@@ -25,10 +25,8 @@ public class AddressBookController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<Void> redirectToApi() {
-        return ResponseEntity.status(HttpStatus.FOUND)
-                .header("Location", "/api/addressBooks")
-                .build();
+    public String home() {
+        return "redirect:/addressBooks/1/view";
     }
 
     // Get all address books

@@ -1,3 +1,4 @@
+org/addressbookproject/controller/AddressBookController.class
 org/addressbookproject/repository/AddressBookRepository.class
 org/addressbookproject/controller/views/AddressBookViewController.class
 org/addressbookproject/service/AddressBookService.class

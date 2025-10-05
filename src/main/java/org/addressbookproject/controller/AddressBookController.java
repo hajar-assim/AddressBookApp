@@ -112,4 +112,12 @@ public class AddressBookController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @PostMapping("/reset")
+    public ResponseEntity<Void> resetDatabase() {
+        buddyInfoRepository.deleteAll();
+        addressBookRepository.deleteAll();
+        return ResponseEntity.ok().build();
+    }
+
 }

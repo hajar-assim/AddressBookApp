@@ -1,0 +1,7 @@
+org/addressbookproject/repository/AddressBookRepository.class
+org/addressbookproject/controller/views/AddressBookViewController.class
+org/addressbookproject/service/AddressBookService.class
+org/addressbookproject/AddressBookApplication.class
+org/addressbookproject/entity/BuddyInfo.class
+org/addressbookproject/repository/BuddyInfoRepository.class
+org/addressbookproject/entity/AddressBook.class

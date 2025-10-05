@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="lab1-checkout-1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/lab1-checkout-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
